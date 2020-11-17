@@ -17,7 +17,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "pubBD": "yarn build && bn publish"
   },
   "peerDependencies": {},
   "husky": {
@@ -31,7 +32,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "json-defor",
+  "name": "@byted-ei/json-defor",
   "author": "alobe",
   "module": "dist/json-defor.esm.js",
   "size-limit": [
