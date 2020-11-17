@@ -32,7 +32,7 @@ const QueryFn = {
   function: (data: Data, pathFnArr: [string, (queryData: Data) => Data]) => {
     const [path, fn] = pathFnArr;
     const got = jp({ path, json: data });
-    return fn?.(got[0]) ?? got;
+    return fn ? fn(got[0]) : got;
   },
   constant: (data: Data, pathFn: () => Data) => pathFn(),
 };
