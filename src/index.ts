@@ -11,7 +11,7 @@ export type Path =
 const QueryFn = {
   string: (data: Data, path: string): Data => {
     if (!path.includes('$')) return path;
-    const got = jp({ path, json: data, resultType: 'all' });
+    const got = jp({ path, json: data, resultType: 'all' }) || [];
     return got[0]?.value;
   },
   array: (data: Data, pathArr: [string, Path]): Data => {
@@ -31,7 +31,7 @@ const QueryFn = {
     ),
   function: (data: Data, pathFnArr: [string, (queryData: Data) => Data]) => {
     const [path, fn] = pathFnArr;
-    const got = jp({ path, json: data });
+    const got = jp({ path, json: data }) || [];
     return fn ? fn(got[0]) : got;
   },
   constant: (data: Data, pathFn: () => Data) => pathFn(),
